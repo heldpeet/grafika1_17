@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Desktop\graf1hf\hazi.cpp">
+    <ClCompile Include="hazi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
