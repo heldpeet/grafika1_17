@@ -238,11 +238,44 @@ public:
 
 		// vertex coordinates: vbo[0] -> Attrib Array 0 -> vertexPosition of the vertex shader
 		glBindBuffer(GL_ARRAY_BUFFER, vbo[0]); // make it active, it is an array
-		float tomb[10];
-		for (int i = -10; i < -6; i++)
+		static float tomb[240];
+		float last_x_o = -10.0;
+		float last_x_k = -9.0;
+		float last_y_o = -9.0;
+		float last_y_k = -10.0;
+		tomb[0] = -10;
+		tomb[1] = -10;
+		tomb[2] = last_x_o;
+		tomb[3] = last_x_k;
+		tomb[4] = last_y_o;
+		tomb[5] = last_y_k;
+		for (int i = 6; i < 240; i+=12)
 		{	
-			tomb[i] = i;
-			printf("%d %d %d\n", i,i-1, i-1);
+			
+				tomb[i] = last_x_o;
+				tomb[i + 1] = last_x_k;
+				tomb[i + 2] = last_y_o;
+				tomb[i + 3] = last_y_k;
+				tomb[i + 4] = last_y_o;
+				tomb[i + 5] = last_y_k + 1;
+
+				last_x_o = tomb[i + 2];
+				last_x_k = tomb[i+3];
+				last_y_o = tomb[i + 4];
+				last_y_k = tomb[i + 5];
+
+
+				tomb[i+6] = last_x_o;
+				tomb[i + 7] = last_x_k;
+				tomb[i + 8] = last_y_o;
+				tomb[i + 9] = last_y_k;
+				tomb[i + 10] = last_y_o+1;
+				tomb[i + 11] = last_y_k -1;
+				last_x_o = tomb[i + 8];
+				last_x_k = tomb[i + 9];
+				last_y_o = tomb[i + 10];
+				last_y_k = tomb[i + 11];
+			
 		}
 
 		static float vertexCoords[] = { -10, -10, -10, -9, -9, -10,
@@ -253,8 +286,8 @@ public:
 										-8, -9, -7, -10, -7,-9
 										};	// vertex data on the CPU
 		glBufferData(GL_ARRAY_BUFFER,      // copy to the GPU
-			         sizeof(vertexCoords), // number of the vbo in bytes
-					 vertexCoords,		   // address of the data array on the CPU
+			         sizeof(tomb), // number of the vbo in bytes
+					 tomb,		   // address of the data array on the CPU
 					 GL_STATIC_DRAW);	   // copy to that part of the memory which is not modified 
 		// Map Attribute Array 0 to the current bound vertex buffer (vbo[0])
 		glEnableVertexAttribArray(0); 
@@ -271,7 +304,52 @@ public:
 										1, 0, 0,  0, 0, 1,  0, 0, 1,
 										1, 0, 0,  1, 1, 1,  1, 0, 1 ,
 										1, 1, 0, 0, 1, 1, 1, 1,0,
-										1, 0, 0,  0, 0, 1,  0, 0, 1 };	// vertex data on the CPU
+										1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1 };	// vertex data on the CPU
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertexColors), vertexColors, GL_STATIC_DRAW);	// copy to the GPU
 
 		// Map Attribute Array 1 to the current bound vertex buffer (vbo[1])
@@ -306,7 +384,7 @@ public:
 		else printf("uniform MVP cannot be set\n");
 
 		glBindVertexArray(vao);	// make the vao and its vbos active playing the role of the data source
-		glDrawArrays(GL_TRIANGLES, 0, 18);	// draw a single triangle with vertices defined in vao
+		glDrawArrays(GL_TRIANGLES, 0, 240);	// draw a single triangle with vertices defined in vao
 	}
 };
 
