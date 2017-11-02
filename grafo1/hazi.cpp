@@ -238,7 +238,7 @@ public:
 
 		// vertex coordinates: vbo[0] -> Attrib Array 0 -> vertexPosition of the vertex shader
 		glBindBuffer(GL_ARRAY_BUFFER, vbo[0]); // make it active, it is an array
-		static float tomb[240];
+		static float tomb[480];
 		float last_x_o = -10.0;
 		float last_x_k = -9.5;
 		float last_y_o = -9.5;
@@ -249,7 +249,7 @@ public:
 		tomb[3] = last_x_k;
 		tomb[4] = last_y_o;
 		tomb[5] = last_y_k;
-		for (int i = 6; i < 240; i+=12)
+		for (int i = 6; i < 480; i+=12)
 		{	
 			
 				tomb[i] = last_x_o;
@@ -355,7 +355,35 @@ public:
 										1, 0, 0,  0, 0, 1,  0, 0, 1,
 										1, 0, 0,  1, 1, 1,  1, 0, 1 ,
 										1, 1, 0, 0, 1, 1, 1, 1,0,
-										1, 0, 0,  0, 0, 1,  0, 0, 1 };	// vertex data on the CPU
+										1, 0, 0,  0, 0, 1,  0, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 0, 0,  1, 0, 0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1,
+			1, 0, 0,  1, 1, 1,  1, 0, 1 ,
+			1, 1, 0, 0, 1, 1, 1, 1,0,
+			1, 0, 0,  0, 0, 1,  0, 0, 1 };	// vertex data on the CPU
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertexColors), vertexColors, GL_STATIC_DRAW);	// copy to the GPU
 
 		// Map Attribute Array 1 to the current bound vertex buffer (vbo[1])
