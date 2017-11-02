@@ -447,7 +447,9 @@ public:
 
 	void AddPoint(float cX, float cY) {
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		if (nVertices >= 3) return;
+		if (nVertices == 3) { 
+			
+			return; }
 
 		vec4 wVertex = vec4(cX, cY, 0, 1) * camera.Pinv() * camera.Vinv();
 		// fill interleaved data
@@ -462,9 +464,14 @@ public:
 	}
 
 	void Draw() {
-		if (nVertices > 2) {
+		if (nVertices == 3) {
 			mat4 VPTransform = camera.V() * camera.P();
-
+			vertexData[5 * nVertices] = vertexData[0];
+			vertexData[5 * nVertices + 1] = vertexData[1];
+			vertexData[5 * nVertices + 2] = 1; // red
+			vertexData[5 * nVertices + 3] = 1; // green
+			vertexData[5 * nVertices + 4] = 0; // blue
+			glBufferData(GL_ARRAY_BUFFER, nVertices * 5 * sizeof(float), vertexData, GL_DYNAMIC_DRAW);
 			int location = glGetUniformLocation(shaderProgram, "MVP");
 			if (location >= 0) glUniformMatrix4fv(location, 1, GL_TRUE, VPTransform);
 			else printf("uniform MVP cannot be set\n");
